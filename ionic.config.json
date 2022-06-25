@@ -1,0 +1,7 @@
+{
+  "name": "familyTasks",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
