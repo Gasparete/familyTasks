@@ -1,17 +1,50 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title class="ion-text-center">Tarefas</ion-title>
   </ion-toolbar>
+  <ion-tab-bar>
+    <ion-tab-button tab="tab1">
+      <ion-label>Pendentes</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="tab2">
+      <ion-label>Concluídas</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content>
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title class="ion-text-left">Tarefas pendentes</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="ion-padding">
+    <ion-list>
+      <ion-item-sliding *ngFor="let note of notes; let i = index">
+        <div *ngIf="note.status === false">
+          <ion-item (click)="openNote(note)">
+            <ion-label slot="start">{{note.title}}</ion-label>
+            <ion-icon name="arrow-forward" slot="end" size="small"></ion-icon>
+          </ion-item>
+
+          <ion-item-options (ionSwipe)="updateStatusNote(note)">
+            <ion-item-option
+              color="success"
+              (click)="updateStatusNote(note)"
+              expandable
+            >
+              <ion-icon name="checkmark"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </div>
+      </ion-item-sliding>
+    </ion-list>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="addNote()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
 </ion-content>

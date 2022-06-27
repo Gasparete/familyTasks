@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-title class="ion-text-center"> Resultados </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,5 +11,31 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-item>
+    <ion-tabs>
+      <ion-tab-bar slot="top">
+        <ion-tab-button>
+          <ion-label>Desde o início</ion-label>
+        </ion-tab-button>
+        <ion-tab-button>
+          <ion-label>Anual</ion-label>
+        </ion-tab-button>
+        <ion-tab-button>
+          <ion-label>Mensal</ion-label>
+        </ion-tab-button>
+        <ion-tab-button>
+          <ion-label>Semanal</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-item>
+
+  <div class="ion-padding">
+    <ion-list *ngFor="let userQuantidade of listaUsuarioQuantidades">
+      <ion-item>
+        <ion-label slot="start">{{userQuantidade.usuario}}</ion-label>
+        <ion-label slot="end">{{userQuantidade.quantidade}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
